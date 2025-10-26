@@ -140,13 +140,12 @@ const questionnaire = {
 timeline.push(questionnaire);
 
 //THANKS//
-var final_trial = {
+var thanks = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `<p>You've finished the last task. Thanks for participating!</p>
     <p><a href="https://app.prolific.com/submissions/complete?cc=C1H3NC6F">Click here to return to Prolific and complete the study</a>.</p>`,
   choices: "NO_KEYS"
 }
-
 
 timeline.push(thanks);
 
