@@ -161,7 +161,8 @@ jsPsych.data.addProperties({
     session_id: session_id
 });
 
-const filename = `${subject_id}.csv`;
+const p_id = jsPsych.randomization.randomID(10);
+const filename = `${p_id}.csv`;
 
 
 const save_data = {
