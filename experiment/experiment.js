@@ -140,13 +140,40 @@ const questionnaire = {
 timeline.push(questionnaire);
 
 //THANKS//
-const thanks = {
-    type: jsPsychHtmlButtonResponse,
-    choices: ['End'],
-    stimulus: "Thank you for your time! Please click 'End' to complete the study and wait until you are redirected to Prolific."
-};
+var final_trial = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `<p>You've finished the last task. Thanks for participating!</p>
+    <p><a href="https://app.prolific.com/submissions/complete?cc=C1H3NC6F">Click here to return to Prolific and complete the study</a>.</p>`,
+  choices: "NO_KEYS"
+}
+
 
 timeline.push(thanks);
+
+//DATA COLLECTION
+// capture info from Prolific
+var subject_id = jsPsych.data.getURLVariable('PROLIFIC_PID');
+var study_id = jsPsych.data.getURLVariable('STUDY_ID');
+var session_id = jsPsych.data.getURLVariable('SESSION_ID');
+
+jsPsych.data.addProperties({
+    subject_id: subject_id,
+    study_id: study_id,
+    session_id: session_id
+});
+
+const filename = `${subject_id}.csv`;
+
+
+const save_data = {
+    type: jsPsychPipe,
+    action: "save",
+    experiment_id: "b2rcqDw4TG2Z",
+    filename: filename,
+    data_string: ()=>jsPsych.data.get().csv()
+};
+
+timeline.push(save_data);
 
 //RUN//
 jsPsych.run(timeline);
