@@ -32,7 +32,7 @@ var trial_2 = {
   type: jsPsychSurveyText,
   questions: [
     {prompt: 'List 5-10 words that come to mind when you think of how an autistic person behaves.', 
-    name: 'Person', 
+    name: 'Behavior', 
     rows: 5,
     required: true},
   ]
@@ -167,7 +167,7 @@ timeline.push(save_data);
 //THANKS//
 var thanks = {
   type: jsPsychHtmlKeyboardResponse,
-  stimulus: `<p>You've finished the last task. Thanks for participating!</p>
+  stimulus: `<p>You've finished the study. Thank you for your time!</p>
     <p><a href="https://app.prolific.com/submissions/complete?cc=C1H3NC6F">Click here to return to Prolific and complete the study</a>.</p>`,
   choices: "NO_KEYS"
 }
