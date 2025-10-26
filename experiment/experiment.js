@@ -1,10 +1,9 @@
 const jsPsych = initJsPsych({
     show_progress_bar: true,
-    on_finish: function(data) {
-        proliferate.submit({"trials": data.values()});
-    }
+    on_finish: function() {
+        jsPsych.data.displayData('csv');
   }
-);
+});
 
 let timeline = []; //Empty timeline
 
