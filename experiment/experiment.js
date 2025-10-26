@@ -1,5 +1,8 @@
 const jsPsych = initJsPsych({
-    show_progress_bar: true
+    show_progress_bar: true,
+    on_finish: function(data) {
+        proliferate.submit({"trials": data.values()});
+    }
   }
 );
 
