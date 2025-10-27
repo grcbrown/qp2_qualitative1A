@@ -60,7 +60,7 @@ var trial_4 = {
 
 timeline.push(trial_1, trial_2, trial_3, trial_4);
 
-//INSTRUCTIONS
+//SURVEY INSTRUCTIONS
 const transition = {
     type: jsPsychHtmlButtonResponse,
     stimulus: "<p>Thank you for providing your impressions of autism. You will now be directed to an optional demographic survey. Please answer the survey questions if you feel comfortable doing so. After seeing the survey, you will be able to end the study.</p>",
@@ -69,6 +69,7 @@ const transition = {
 
 timeline.push(transition);
 
+//SURVEY
 const questionnaire = {
   type: jsPsychSurvey,
   theme: "modern",
