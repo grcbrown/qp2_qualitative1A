@@ -32,6 +32,8 @@ const irb = {
     margin_vertical: '10px'
 };
 
+timeline.push(irb);
+
 //INSTRUCTIONS
 const instructions = {
     type: jsPsychHtmlButtonResponse,
