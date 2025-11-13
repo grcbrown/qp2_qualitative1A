@@ -7,6 +7,30 @@ const jsPsych = initJsPsych({
 
 let timeline = []; //Empty timeline
 
+//IRB 
+const irb = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `
+        <div style="font-size: 16px; text-align: center; margin-top: 25px; margin-right: 100px; margin-left: 100px; margin-bottom: 25px;">
+            <img src="./image/SUSig_2color_Stree_Left.png" alt="Stanford Logo" style="max-width: 500px; margin-bottom: 20px;">
+            <h3>DESCRIPTION</h3>
+            <p>You are invited to participate in a research study. It’s general purpose is to understand what associations people hold with Autism Spectrum Condition. In this study, we will ask you a four questions about your broad impressions of Autism. Following this, you will be asked to complete an optional demographic survey. Participation in this research is voluntary, and you are free to withdraw your consent at any time.</p>
+            <h3>TIME INVOLVEMENT</h3> 
+            <p>Your participation will take approximately 4 minutes.</p>
+            <h3>PAYMENT</h3> 
+            <p>You will be paid at the posted rate.</p>
+            <h3>PRIVACY AND CONFIDENTIALITY</h3> 
+            <p>The risks associated with this study are minimal. This judgment is based on a large body of experience with the same or similar procedures with people of similar ages, sex, origins, etc. Study data will be stored securely, in compliance with Stanford University standards, minimizing the risk of confidentiality breach. Your individual privacy will be maintained during the research and in all published and written data resulting from the study.</p>
+            <h3>CONTACT INFORMATION</h3>
+            <p>If you have any questions, concerns or complaints about this research study, its procedures, risks and benefits, you should contact the Protocol Director, Grace Brown, at (616) 498-8188. If you are not satisfied with how this study is being conducted, or if you have any concerns, complaints, or general questions about the research or your rights as a participant, please contact the Stanford Institutional Review Board (IRB) to speak to someone independent of the research team at (650) 723-2480 or toll free at 1-866-680-2906. You can also write to the Stanford IRB, Stanford University, 1705 El Camino Real, Palo Alto, CA 94306 USA.</p> 
+            <h3>WAIVER OF DOCUMENTATION</h3>
+            <p>If you agree to participate in this research, please click the 'Continue' button.</p>
+        </div>
+    `,
+    choices: ['Continue'],
+    response_ends_trial: true,
+    margin_vertical: '10px'
+};
 
 //INSTRUCTIONS
 const instructions = {
@@ -21,41 +45,53 @@ timeline.push(instructions);
 var trial_1 = {
   type: jsPsychSurveyText,
   questions: [
-    {prompt: 'List 5-10 words that come to mind when you think of an autistic person.', 
+    {prompt: 'List 5-10 words that come to mind when you think of an autistic person. <br> Separate your list items with a comma.', 
     name: 'Person', 
     rows: 5,
     required: true},
-  ]
+  ],
+  data: {
+        question_type: "person"
+      }
 };
 
 var trial_2 = {
   type: jsPsychSurveyText,
   questions: [
-    {prompt: 'List 5-10 words that come to mind when you think of how an autistic person behaves.', 
+    {prompt: 'List 5-10 words that come to mind when you think of how an autistic person behaves. <br> Separate your list items with a comma.', 
     name: 'Behavior', 
     rows: 5,
     required: true},
-  ]
+  ], 
+  data: {
+        question_type: "behavior"
+      }
 };
 
 var trial_3 = {
   type: jsPsychSurveyText,
   questions: [
-    {prompt: 'List 5-10 words that describe what an autistic person sounds like.', 
+    {prompt: 'List 5-10 words that describe what an autistic person sounds like. <br> Separate your list items with a comma.', 
     name: 'Sound', 
     rows: 5,
     required: true},
-  ]
+  ],
+  data: {
+        question_type: "sound"
+      }
 };
 
 var trial_4 = {
   type: jsPsychSurveyText,
   questions: [
-    {prompt: 'Do you know anyone who is autistic?', 
+    {prompt: 'Do you know anyone who is autistic? <br> <i>Please do not provide any identifying information in your response.</i>', 
     name: 'Know', 
     rows: 5,
     required: true}
-  ]
+  ],
+  data: {
+        question_type: "know"
+      }
 };
 
 timeline.push(trial_1, trial_2, trial_3, trial_4);
@@ -158,7 +194,7 @@ const filename = `${p_id}.csv`;
 const save_data = {
     type: jsPsychPipe,
     action: "save",
-    experiment_id: "b2rcqDw4TG2Z",
+    experiment_id: "IZtniyQHNo0u",
     filename: filename,
     data_string: ()=>jsPsych.data.get().csv()
 };
